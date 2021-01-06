@@ -1,0 +1,45 @@
+
+form{
+    width:30%;
+    background-color:rgb(168, 9, 168);
+    border: thick inset;
+    border-color: purple;
+    border-radius: 10px;
+    margin: 50px auto;
+    padding: 5%;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    }
+.registration{
+    margin: 10px 0px 10px 0px;
+}
+.registration label{
+    display: block;
+    text-align:left;
+    margin: 3px;
+}
+.registration input{
+    height:30px;
+    width: 93%;
+    padding: 5px 10;
+    border-radius: 5px;
+    border: 1px solid lightpink;
+}
+.submit{
+    margin: 3px;
+    text-align: center;
+}
+.submit input{
+    color: purple;
+    border: thick solid rgb(230, 107, 230);
+}
+
+.wel{
+    text-align: center;
+    font-style: italic;
+    font-family: 'Courier New', Courier, monospace;
+}
+.span{
+    color: purple;
+    font-size: 40px;
+    font-family: serif;
+}
