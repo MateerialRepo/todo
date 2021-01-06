@@ -1,6 +1,6 @@
 
 form{
-    width:30%;
+    width:25%;
     background-color:rgb(168, 9, 168);
     border: thick inset;
     border-color: purple;
@@ -42,4 +42,8 @@ form{
     color: purple;
     font-size: 40px;
     font-family: serif;
+}
+.forgot{
+    color:rgb(184, 173, 247);
+    text-align: right;
 }
