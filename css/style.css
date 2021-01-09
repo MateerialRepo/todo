@@ -1,4 +1,13 @@
+.body{
+    background: url('../images/todo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 600px;
+    float: right;
 
+    
+}
 form{
     width:40%;
     background-color:rgb(168, 9, 168);

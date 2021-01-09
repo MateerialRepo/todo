@@ -1,11 +1,6 @@
 <?php
 session_start();
 include('database.php');
-// include('message.php');
-// include('error.php');
-// $username ="";
-$email = "";
-// $errors= "";
 if(isset($_POST['register'])){
     $username =  mysqli_real_escape_string($conn, $_POST['username']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -38,8 +33,10 @@ if(isset($_POST['register'])){
             elseif($user['email'] === $email){
                 $_SESSION['error'] = "email already exists";
                 header("location:registration.php");
-             }else{
-                $password = sha1($password);
+            }elseif(strlen($password) < 8){
+                $_SESSION['error'] = "Password too short";
+                header("location:registration.php");
+            }else{$password = sha1($password);
                 $sql = mysqli_query($conn, "INSERT INTO users(username, email, password) VALUES ('$username', '$email', '$password')");
                 $_SESSION['success'] = "Registration successful";
                 header("location:login.php");
@@ -62,7 +59,7 @@ if(isset($_POST['login'])){
          $results = mysqli_query($conn, "SELECT * FROM users WHERE username='$username' AND password='$password'");
    if(mysqli_num_rows($results) == 1){
        $_SESSION['success'] ="you are now logged in";
-       header('location:login.php');
+       header('location:dashboard.php');
    }else{
        $_SESSION['error'] = "Wrong Username/Password";
        header('location:login.php');

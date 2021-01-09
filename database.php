@@ -24,49 +24,42 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // if($conn->query($sql) === TRUE){
 //     echo "Table created";
 // }else{
-//     echo "Table not craete" . $conn->error;
+//     echo "Table not created" . $conn->error;
 // }
 
-// include('databse.php');
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "todo";
-// $conn = new mysqli($servername, $username, $password, $dbname);
-// $username ="";
-// $email ="";
+// $sql = "CREATE TABLE statuses(
+//     id INT(6) AUTO_INCREMENT PRIMARY KEY,
+//     status VARCHAR(50) NOT NULL
+// )";
+// if($conn->query($sql) === TRUE){
+//     echo "Table created";
+// }else{
+//     echo "Table not created" . $conn->error;
+// }
+// $sql = "INSERT INTO statuses(status) VALUE ('Pending');";
+// $sql.= "INSERT INTO statuses(status) VALUE ('In Progress');";
+// $sql.= "INSERT INTO statuses(status) VALUE ('Completed')";
+// if($conn->multi_query($sql) === TRUE){
+//     echo "Statuses added";
+// }else {
+//     echo "Status not added". $conn->error;
+// }
+// $sql = "CREATE TABLE priorities(
+//     id INT(6) AUTO_INCREMENT PRIMARY KEY,
+//     priority VARCHAR(50) NOT NULL
+// )";
 
-// if(isset($_POST['register'])){
-//     $username = $mysqli->real_escape_string($_POST['username']);
-//     $email = $mysqli->real_escape_string($_POST['email']);
-//     $password =$mysqli->real_escape_string($_POST['password']);
-//     $confirm_password = $mysqli->real_escape_string($_POST['confrim_password']);
-
-//     if(empty($username)){
-//         echo "Username is required";
-//     }
-//     if(empty($email)){
-//         echo "email is required";
-//     }
-//     if(empty($password)){
-//         echo "Password required";
-//     }
-//     if($password!=$confirm_password){
-//         echo "passwords don't match";
-
-//     }
-//     $results = mysqli_query($conn, "SELECT FROM users WHERE username = '$username' OR email = '$email' LIMIT 1") ;
-//     $user = mysqli_fetch_array($results);
-//     if($user){
-//         if($user['username'] === $username){
-//             echo "Username already exists";
-//         }
-//         if($user['email'] === $eamil){
-//             echo "email already exists";
-//         }
-//     };
-//     $password = sha1($password);
-//     $sql = mysqli_query($conn, "INSERT INTO users(username, email, password) VALUES ('$username', '$email', '$password')");
-//     echo "Registeration successful";
+// if($conn->query($sql) === TRUE){
+//     echo "Table created";
+// }else{
+//     echo "Table not created" . $conn->error;
+// }
+// $sql = "INSERT INTO priorities(priority) VALUE ('Low');";
+// $sql.= "INSERT INTO priorities(priority) VALUE ('Medium');";
+// $sql.= "INSERT INTO priorities(priority) VALUE ('High')";
+// if($conn->multi_query($sql) === TRUE){
+//     echo "Priorities added";
+// }else {
+//     echo "Priorities not added". $conn->error;
 // }
 ?>
