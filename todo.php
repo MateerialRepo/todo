@@ -66,5 +66,34 @@ if(isset($_POST['login'])){
    }
         }
 }
+if(isset($_POST['submit'])){
+    try{
+        
+        $task_name = mysqli_real_escape_string($conn, ($_POST['task_name']));
+        $task_description =mysqli_real_escape_string($conn,($_POST['task_description']));
+        $status = $_POST['status'];
+        $priority = $_POST['priority'];
+        $end_date = mysqli_real_escape_string($conn, ($_POST['end_date']));
+        $results = mysqli_query($conn,"SELECT id FROM statuses WHERE status = '$status'");
+        while ($row = mysqli_fetch_row($results)){
+            $status = $row['id'];
+        }
+        $results = mysqli_query($conn,"SELECT id FROM priorities WHERE priority = '$priority'");
+        while ($row = mysqli_fetch_row($results)){
+            $priority = $row['id'];
+        }
+
+
+        // $priority = mysqli_query($conn, "SELECT id FROM priorities WHERE priority = $priority");
+        // if(
+            mysqli_query($conn, "INSERT INTO tasks (task_name, task_description, status_id, priority_id, end_date) 
+    VALUES('$task_name', '$task_description', '$status', '$priority', '$end_date')");
+    // 
+        }catch(\Exception $e){
+            var_dump($e->getMessage());
+        // }git 
+        
+}
+}
 
 ?>

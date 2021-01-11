@@ -62,4 +62,22 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // }else {
 //     echo "Priorities not added". $conn->error;
 // }
-?>
+// $sql = "CREATE TABLE tasks(
+//     id INT(6) AUTO_INCREMENT PRIMARY KEY,
+//     task_name VARCHAR(50) NOT NULL,
+//     task_description TEXT(100) NOT NULL,
+//     status_id INT(6) NOT NULL, 
+//     FOREIGN KEY (status_id) REFERENCES statuses(id),
+//     priority_id INT(6) NOT NULL,
+//     FOREIGN KEY (priority_id) REFERENCES priorities(id),
+//     created_at TIMESTAMP,
+//     -- updated_at TIMESTAMP
+//    end_date DATE NOT NULL
+
+//  )";
+// if ($conn->query($sql) === true){
+//         echo "Table created";
+//     }else{
+//         echo "Table not created" . $conn->error;
+//     }
+ ?>
