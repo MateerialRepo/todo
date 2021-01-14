@@ -56,3 +56,56 @@ form{
     color:rgb(184, 173, 247);
     text-align: right;
 }
+.dashboard ul{
+list-style-type: none;
+margin:0;
+padding:0;
+background-color: rgb(236, 132, 236);
+height: 100%;
+/* width: 80%; */
+position: fixed;
+overflow: auto;
+}
+/* li{
+    text-decoration: none; */
+
+.dashboard li a{
+    display: block;
+    /* width: 200px; */
+    text-decoration: none;
+    /* height: 40px; */
+    /* text-align: center; */
+    padding: 8px 16px;
+    color: white;
+}
+li a:hover{
+    background-color: rgb(241, 179, 241);
+    color: #555;
+}
+li a:active{
+    background-color: rgb(253, 194, 234);
+}
+.main{
+    margin:10px 10px 10px 200px; 
+    height:1000px;
+    /* width:x; */
+    /* padding:1px 16px;  */
+     background-color:white; 
+    border-style: solid rgb(236, 177, 236); 
+    border-radius:20px;
+}
+.home{
+    /* border-style: solid; */
+    /* border-radius: 20px; */
+    /* margin:100px 800px 800px 100px; */
+    background-color: white;
+    /* box-shadow */
+    max-width: 1400px;
+    height: 600px;
+    margin: 100px 50px 100px 40px;
+    overflow: auto;
+    
+}
+div .card-name{
+    margin-top: 20px;
+}

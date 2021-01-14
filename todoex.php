@@ -1,9 +1,6 @@
 <?php
-session_save_path();
-// session_start();
+session_start();
 include('database.php');
-include('message.php');
-
 if(isset($_POST['register'])){
     $username =  mysqli_real_escape_string($conn, $_POST['username']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -15,6 +12,8 @@ if(isset($_POST['register'])){
         // ';
         $_SESSION['error'] = "username is required";
         header("location:registration.php");
+        // exit();
+        // echo "username is required";
     }elseif(empty($email)){
         $_SESSION['error'] = "Email is required";
         header("location:registration.php");
@@ -68,22 +67,33 @@ if(isset($_POST['login'])){
         }
 }
 if(isset($_POST['submit'])){
-    try{ 
+    try{
+        
         $task_name = mysqli_real_escape_string($conn, ($_POST['task_name']));
         $task_description =mysqli_real_escape_string($conn,($_POST['task_description']));
         $status = $_POST['status'];
         $priority = $_POST['priority'];
         $end_date = mysqli_real_escape_string($conn, ($_POST['end_date']));
-        $sql = "INSERT INTO tasks (task_name, task_description, status_id, priority_id, end_date) 
-            VALUES('$task_name', '$task_description', '$status', '$priority', '$end_date')";
-           if(mysqli_query($conn, $sql)){
-            echo "Records inserted successfully.";
-        } else{
-            echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
+        $results = mysqli_query($conn,"SELECT id FROM statuses WHERE status = '$status'");
+        while ($row = mysqli_fetch_row($results)){
+            $status = $row['id'];
         }
-    }catch(\Exception $e){
-        var_dump($e->getMessage());exit;
-    }
+        $results = mysqli_query($conn,"SELECT id FROM priorities WHERE priority = '$priority'");
+        while ($row = mysqli_fetch_row($results)){
+            $priority = $row['id'];
+        }
+
+
+        // $priority = mysqli_query($conn, "SELECT id FROM priorities WHERE priority = $priority");
+        // if(
+            mysqli_query($conn, "INSERT INTO tasks (task_name, task_description, status_id, priority_id, end_date) 
+    VALUES('$task_name', '$task_description', '$status', '$priority', '$end_date')");
+    // 
+        }catch(\Exception $e){
+            var_dump($e->getMessage());
+        // }git 
+        
+}
 }
 
 ?>

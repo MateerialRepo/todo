@@ -1,4 +1,9 @@
-<?php include('database.php');?>
+<?php include('database.php');
+// include('todo.php');
+
+?>
+
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +17,9 @@
     <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script src="js/plan.js"></script>
-    
+
+    <!-- <link rel="stylesheet" href="datepicker.min.css"> -->
+    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> -->
     <script>
         $(function() {
     $( "#datepicker" ).datepicker({
@@ -44,8 +51,8 @@
                 <option value="">Select Priority</option>
                      <?php  
                      $priority = mysqli_query($conn, "SELECT id, priority FROM priorities");
-                     foreach ($priority as $key => $val) {?>
-                <option value="<?php echo $val['id']?>"><?php echo $val['priority'] ?></option>
+                     while($data = mysqli_fetch_array($priority)){?>
+                <option value="<?php $data['id']?>"><?php echo $data['priority'] ?></option>
                     <?php }?>
               </select>
         </div>
@@ -56,7 +63,7 @@
                      <?php
                      $status = mysqli_query($conn, "SELECT id, status FROM statuses");
                      while($data = mysqli_fetch_array($status)){ ?>
-                <option value="<?php echo $data['id'] ?>"> <?php echo$data['status'] ?> </option>
+                <option value="<?php $data['id'] ?>"> <?php echo$data['status'] ?> </option>
                     <?php }  ?>
               </select>
         </div>
