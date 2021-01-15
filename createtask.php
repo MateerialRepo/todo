@@ -36,7 +36,7 @@
         </div>
         <div>
         <label for="task_description"> Task Description</label>
-        <input type="text" name= "task_description">
+        <input type="text-area" name= "task_description">
         </div>
         <div>
             <label for="priority">Priority</label>

@@ -1,4 +1,5 @@
-<?php include('message.php')?>
+
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,8 @@
     <h1 class = "wel"><span class ="span">WELCOME T</span>o <span class="span">Y</span>oo
         <span class="span">T</span>odo <span class="span">A</span>pp <span class="span">!!!</span> </h1>
     <form action="todo.php" method= "POST">
-        <h2 style= "text-align: center; color: white;">Create Your Account</h2>
+           <h2 style= "text-align: center; color: white;">Create Your Account</h2>
+           <?php include('message.php') ?>
         <div class="registration">
             <label for="username">Username</label>
             <input type="text" name="username" placeholder="Enter your Username">

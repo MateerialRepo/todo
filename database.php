@@ -4,11 +4,11 @@ $username ="root";
 $password ="";
 $dbname = "todo";
 $conn = new mysqli($servername, $username, $password, $dbname);
-// if ($conn->connect_error){
-//     die ("connection failed" . $conn->connect_error);
+if ($conn->connect_error){
+    die ("connection failed" . $conn->connect_error);
 // }else{
 //     echo "connected successfully";
-// }
+}
 // $sql = "CREATE DATABASE todo";
 // if($conn->query($sql) === TRUE){
 //     echo "database created successfully";
@@ -66,18 +66,34 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 //     id INT(6) AUTO_INCREMENT PRIMARY KEY,
 //     task_name VARCHAR(50) NOT NULL,
 //     task_description TEXT(100) NOT NULL,
+//     user_id INT(6) NOT NULL,
+//     FOREIGN KEY (user_id) REFERENCES users(id),
 //     status_id INT(6) NOT NULL, 
 //     FOREIGN KEY (status_id) REFERENCES statuses(id),
 //     priority_id INT(6) NOT NULL,
 //     FOREIGN KEY (priority_id) REFERENCES priorities(id),
 //     created_at TIMESTAMP,
+//     tag_id INT(6) NOT NULL,
+//     FOREIGN KEY (tag_id) REFERENCES tags(id),
 //     -- updated_at TIMESTAMP
 //    end_date DATE NOT NULL
 
-//  )";
+//   )";
 // if ($conn->query($sql) === true){
 //         echo "Table created";
 //     }else{
 //         echo "Table not created" . $conn->error;
 //     }
+// $sql = "CREATE table tags(
+//    id INT(6) AUTO_INCREMENT PRIMARY KEY,
+//    tag VARCHAR(50) NOT NULL,
+//    user_id INT(6) NOT NULL,
+//    FOREIGN KEY (user_id) REFERENCES users(id)
+
+// )";
+// if ($conn->query($sql) === true){
+//         echo "Table created";
+// }else{
+//     echo "Table not created" . $conn->error;
+// }
  ?>

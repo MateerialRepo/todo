@@ -1,4 +1,3 @@
-<?php include('message.php')?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +10,7 @@
 <body>
     <form action="todo.php" method="POST">
         <h2 style="text-align: center; color: white;">Login to your account</h2>
+        <?php include('message.php')?>
         <div class="registration">
             <label for="Username">Username</label>
             <input type="text" name="username">
@@ -27,7 +27,7 @@
         </div>
        
 
-        <p class="registration">Don't have an account? <a href="registration.php">sign up</a></p>
+        <p class="registration">Don't have an account? <a href="register.php">sign up</a></p>
     </form>
 </body>
 </html>

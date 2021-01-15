@@ -56,20 +56,20 @@ form{
     color:rgb(184, 173, 247);
     text-align: right;
 }
-.dashboard ul{
+.side-nav ul{
 list-style-type: none;
 margin:0;
 padding:0;
-background-color: rgb(236, 132, 236);
+/* background-color: rgb(236, 132, 236); */
 height: 100%;
-/* width: 80%; */
+/* width: 20%; */
 position: fixed;
 overflow: auto;
 }
 /* li{
     text-decoration: none; */
 
-.dashboard li a{
+.side-nav li a{
     display: block;
     /* width: 200px; */
     text-decoration: none;
@@ -80,6 +80,7 @@ overflow: auto;
 }
 li a:hover{
     background-color: rgb(241, 179, 241);
+    width: 200px;
     color: #555;
 }
 li a:active{
@@ -107,5 +108,16 @@ li a:active{
     
 }
 div .card-name{
-    margin-top: 20px;
+    margin-top:10px;
+    margin-bottom: 30px;
+    background-color: rgb(114, 24, 114);
+    border-radius: 80px 30px;
+    text-align: center;
+    color: white;
+}
+div .hero-image{
+    background-image: url(todo_2.png);
+    background-size: cover;
+    background-repeat: no repeat center;
+    height: 500px;
 }
