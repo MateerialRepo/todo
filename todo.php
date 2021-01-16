@@ -4,6 +4,7 @@ session_save_path();
 include('database.php');
 include('message.php');
 
+// for a user to register 
 if(isset($_POST['register'])){
     $username =  mysqli_real_escape_string($conn, $_POST['username']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -11,8 +12,6 @@ if(isset($_POST['register'])){
     $confirm_password = mysqli_real_escape_string($conn, $_POST['confirm_password']);
 
     if(empty($username)){
-        // $message = '<div class="alert alert-danger" role ="alert>sucess</div>
-        // ';
         $_SESSION['error'] = "username is required";
         header("location:register.php");
     }elseif(empty($email)){
@@ -72,35 +71,46 @@ if(isset($_POST['login'])){
    }
         }
 }
+
+// Backend code for creating a new task
 if(isset($_POST['submit'])){
     try{ 
+        // $_SESSION['tag'] = $tag
+        $tag = $_SESSION['tag'];
+        $sql = mysqli_query($conn, "SELECT id FROM tags WHERE tag = '$tag'");
+        while($row = mysqli_fetch_assoc($sql)){
+        $_SESSION['tag_id'] = $row['id'];
+        }
+        if(!isset($_SESSION['tag'])){
+            echo "you have to create a tag";
+        }else{
+        $username = $_SESSION['username'];
+        $sql = mysqli_query($conn, "SELECT id FROM users WHERE username = '$username'");
+        while($row = mysqli_fetch_assoc($sql)){
+        $_SESSION['user_id'] = $row['id'];
+        }
+        
+        $user_id = $_SESSION['user_id'];
+        $tag_id = $_SESSION['tag_id'];
         $task_name = mysqli_real_escape_string($conn, ($_POST['task_name']));
         $task_description =mysqli_real_escape_string($conn,($_POST['task_description']));
         $status = $_POST['status'];
         $priority = $_POST['priority'];
         $end_date = mysqli_real_escape_string($conn, ($_POST['end_date']));
-        $sql = "INSERT INTO tasks (task_name, task_description, status_id, priority_id, end_date) 
-            VALUES('$task_name', '$task_description', '$status', '$priority', '$end_date')";
+        $sql = "INSERT INTO tasks (user_id,task_name, task_description, status_id, priority_id, end_date, tag_id) 
+            VALUES('$user_id','$task_name', '$task_description', '$status', '$priority', '$end_date', '$tag_id')";
            if(mysqli_query($conn, $sql)){
             echo "Records inserted successfully.";
         } else{
             echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
         }
+    }
     }catch(\Exception $e){
         var_dump($e->getMessage());exit;
     }
 }
 
-// if(isset($_POST['add'])){
-//     $tag = $_POST['tag'];
-//     $username = $_POST['user_id'];
-//     $sql = "INSERT INTO tags (tag, user_id) VALUES ('$tag', '$user_id')";
-//     if(mysqli_query($conn, $sql)){
-//         echo "tags added successfully";
 
-//     }else{
-//         echo "Error: Could not be able to execute $sql." . mysqli_error($conn);
-//     }
-// }
+
 
 ?>

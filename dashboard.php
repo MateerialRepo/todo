@@ -1,7 +1,5 @@
 
-<?php
-// session_start();
-include('todo.php')?>
+<?php include('todo.php')?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,19 +11,17 @@ include('todo.php')?>
 </head>
 <body style="background-color:purple;">
   <div class="side-nav">
-  <ul>
-  <li> <a href="#home">HOME</a> </li>
-  <li> <a href="createTag.php">Add Tag</a> </li>
-  <li> <a href="#">HOME</a> </li>
-  <li> <a href="dashboard.php?logout">Logout</a> </li>
-
-  </ul>
+      <ul>
+          <li> <a href="#home">HOME</a> </li>
+          <li> <a href="createTag.php">Add Tag</a> </li>
+          <li> <a href="#">HOME</a> </li>
+          <li> <a href="dashboard.php?logout">Logout</a> </li>
+      </ul>
   </div>
   <div class="main">
-    <div class="container">
+      <div class="container">
     <!-- <h1 style="padding-top: 50px;">Welcome back!!! NAME</h1> -->
-      <div class="row">
-
+          <div class="row">
 <?php 
 if (!isset($_SESSION['username'])){
   $_SESSION['error'] = "you have to log in first";
@@ -33,45 +29,52 @@ if (!isset($_SESSION['username'])){
 }else{
     echo"<p> Welcome Back  </p>"?> .
     <strong>
-    <?php echo" " .$_SESSION['username']; ?>
+    <?php echo" " .$_SESSION['username']; }?>
     </strong>
-    
+
 <?php
-$username = $_SESSION['username'];
-$sql = mysqli_query($conn, "SELECT id FROM users WHERE username = '$username'");
-while($row = mysqli_fetch_assoc($sql)){
-$_SESSION['user_id'] = $row['id'];
-}
-} 
   if(isset($_POST['add'])){
     $tag = $_POST['tag'];
     $user_id = $_SESSION['user_id'];
-  $sql = "INSERT INTO tags (tag, user_id) VALUES ('$tag', '$user_id')";
-  if(mysqli_query($conn, $sql)){
-    echo" tag created";
-  }else{
-    echo "tags not created". $conn->error;
+    if(empty($tag)){
+      $_SESSION['error'] = "kindly add a tag";
+      header("location:createTag.php");
+    }else{
+      $results = mysqli_query($conn, "SELECT * FROM tags WHERE tag = '$tag' LIMIT 1");
+      $row = mysqli_fetch_assoc($results);
+      if ($row['tag'] === $tag){
+        $_SESSION['error'] = "tag already exists";
+        header("location:dashboard.php");
+        }else{
+        $username = $_SESSION['username'];
+        $sql = mysqli_query($conn, "SELECT id FROM users WHERE username = '$username'");
+        while($row = mysqli_fetch_assoc($sql)){
+        $_SESSION['user_id'] = $row['id'];
+        }
+        $sql = mysqli_query($conn, "INSERT INTO tags (tag, user_id) VALUES ('$tag', '$user_id')");
+       $_SESSION['success'] = "you have created a new tag";
+       header("location:dashboard.php");
+      }
   }
-  // }
 }
 if (isset($_GET['logout'])){
   session_destroy();
   unset($_SESSION['username']);
   header("location:login.php");
 }
- $sql = mysqli_query($conn, "SELECT tag FROM tags");
+ $sql = mysqli_query($conn, "SELECT tag FROM tags ORDER BY tag ASC");
       if ($sql->num_rows > 0) {
         while ($row = $sql->fetch_assoc()) {
-          $tag = $row['tag'];
-          echo "<div class='col-md-3'>
+          $tag = $row['tag'];?>
+         <div class='col-md-3'>
                   <div class='card card-name'>
                     <div class='card-body'>
-                      <h2>$tag</h2>
-                      <span><a href=createtask.php> c <a/> Add task</span>
+                      <h2><?php echo$tag?> </h2>
+                      <span><a href="createtask.php">Add Task</a></span>
                     </div>
                   </div>
-                </div>";
-        } 
+                </div>
+      <?php  } 
       }
 $conn->close();
 ?>
