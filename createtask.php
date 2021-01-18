@@ -1,4 +1,4 @@
-<?php include('database.php');?>
+<?php include('todo.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +36,7 @@
         </div>
         <div>
         <label for="task_description"> Task Description</label>
-        <input type="text-area" name= "task_description">
+        <input type="text" name= "task_description">
         </div>
         <div>
             <label for="priority">Priority</label>
@@ -60,6 +60,13 @@
                     <?php }  ?>
               </select>
         </div>
+        <?php
+        if (isset($_GET['id'])){
+            $tag_id = $_GET['id'];
+           $result = mysqli_query($conn, "SELECT id FROM tags WHERE id = '$tag_id'");}       
+        while($data = mysqli_fetch_array($result)){ ?>
+        <input type="hidden" name = "id" value = "<?php echo $data['id']?>">
+        <?php }?>
         <div>
         <input type="submit" name="submit" value="Create Task">
         </div>
