@@ -89,11 +89,15 @@ if(isset($_POST['submit'])){
 // echo " inserted";
 
          if(empty($task_name)){
-               echo "create username";
-           }elseif(mysqli_query($conn, $sql)){
+            $_SESSION['error'] = "Please add a task name";
+            header('location:createtask.php');
+         }elseif(empty($task_description)){
+                $_SESSION['error'] = "Please add a task description";
+                header('location:createtask.php');
+         }elseif(mysqli_query($conn, $sql)){
             echo "Records inserted successfully.";
            
-        } else{
+        }else{
             echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
         
         }

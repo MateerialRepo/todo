@@ -1,16 +1,7 @@
-.body{
-    background: url('../images/todo.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 600px;
-    float: right;
-
-    
-}
 form{
-    width:40%;
-    background-color:rgb(168, 9, 168);
+    width:20%;
+    background-color: linear-gradient(180deg, purple, white);
+    /* :rgb(168, 9, 168); */
     border: thick inset;
     border-color: purple;
     border-radius: 10px;
@@ -18,15 +9,15 @@ form{
     padding: 5%;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     }
-.registration{
+.input-group{
     margin: 10px 0px 10px 0px;
 }
-.registration label{
+.input-group label{
     display: block;
     text-align:left;
     margin: 3px;
 }
-.registration input{
+.input-group input{
     height:30px;
     width: 93%;
     padding: 5px 10;
@@ -120,4 +111,27 @@ div .hero-image{
     background-size: cover;
     background-repeat: no repeat center;
     height: 500px;
+}
+table{
+    width:50%;
+    color:brown;
+    border:1px solid;
+    border-collapse: collapse;
+    margin-left:200px ;
+}
+
+th{
+    height:70px;
+    border:1px solid;
+    vertical-align: top;
+    padding:10px;
+    border-bottom: 1px solid green;
+}
+td{
+    border:1px solid;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid green;
+}
+tr:nth-child(even){background-color: purple;
 }
