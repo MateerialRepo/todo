@@ -1,5 +1,7 @@
 <?php include('todo.php');
-$sql = mysqli_query($conn, "SELECT task_name, end_date, task_description FROM tasks");?>
+if (isset($_GET['id'])){
+    $tag_id = $_GET['id'];
+$sql = mysqli_query($conn, "SELECT task_name, end_date, task_description FROM tasks WHERE id = '$tag_id'");?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,25 +24,18 @@ $sql = mysqli_query($conn, "SELECT task_name, end_date, task_description FROM ta
  
     <?php
     // echo   
-    $diff = '%y Year %m Month %d Days %h Hours';
+    $diff = '%m Month %d Days %h Hours';
     $dob =  date_create($row['end_date']);
     $today = date_create('now');
     
  $ages = date_diff($dob, $today);
- $age = $ages->format($diff);
-    // $age = $row['end_date'];
-// $dob = new DateTime($age);
-// $today = new DateTime('now');
-
-// $age = $dob->diff($today)->y;
-                 
-                ?>
+ $age = $ages->format($diff); ?>
     <tr>
     <td> <?php echo$row['task_name']; ?></td>
 <td> <?php echo $age; ?></td>
 <td> <?php echo$row['task_description']; ?></td>
 </tr>
-<?php } ?>
+<?php } } ?>
 
 </table>
 

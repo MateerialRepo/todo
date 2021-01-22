@@ -15,13 +15,13 @@
     
     <script>
         $(function() {
-    $( "#datepicker" ).datepicker({
-         //appendText:"(yy-mm-dd)",
-         dateFormat:"yy-mm-dd",
-         altField: "#datepicker-4",
-         altFormat: "DD,MM, yy"
-         })
-      });
+            $( "#datepicker" ).datepicker({
+                //appendText:"(yy-mm-dd)",
+                dateFormat:"yy-mm-dd",
+                altField: "#datepicker-4",
+                altFormat: "DD,MM, yy"
+            })
+        });
     </script>
     
 </head>

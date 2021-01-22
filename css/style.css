@@ -1,7 +1,6 @@
 form{
     width:20%;
-    background-color: linear-gradient(180deg, purple, white);
-    /* :rgb(168, 9, 168); */
+    background-color :rgb(168, 9, 168); 
     border: thick inset;
     border-color: purple;
     border-radius: 10px;
