@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODO APP</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-</head>
+    </head>
 <body>
     <form action="todo.php" method= "POST">
         <h2 style= "text-align: center; color: white;">Create Your Account</h2>

@@ -1,5 +1,6 @@
 <?php
-session_save_path();
+// session_start();
+// session_save_path();
 include('database.php');
 include('message.php');
 
@@ -74,35 +75,31 @@ if (isset($_POST['login'])){
 if(isset($_POST['add'])){
     $tag = $_POST['tag'];
     $username = $_SESSION['username'];
-    $user_id = $_SESSION['user_id'];
     $sql = mysqli_query($conn, "SELECT id FROM users WHERE username = '$username'");
     while($row = mysqli_fetch_assoc($sql)){
     $_SESSION['user_id'] = $row['id'];
+    $user_id = $_SESSION['user_id'];
         if(empty($tag)){
             $_SESSION['error'] = "kindly create a tag";
             header("location:createTag.php");
         }else{
-            $results = mysqli_query($conn, "SELECT * FROM tags WHERE tag = '$tag' LIMIT 1");
+            $results = mysqli_query($conn, "SELECT * FROM tags WHERE tag = '$tag' AND user_id = '$user_id' LIMIT 1");
             $row = mysqli_fetch_assoc($results);
-            if ($row['tag'] === $tag){
+            if ( ($row['tag'] === $tag) && ($row['user_id'] === $user_id) ){
                $_SESSION['error'] = "tag already exists";
                header("location:dashboard.php");
             }else{
                 $sql = mysqli_query($conn, "INSERT INTO tags (tag, user_id) VALUES ('$tag', '$user_id')");
                 $_SESSION['success'] = "you have created a new tag";
                header("location:dashboard.php");
-           }
+            }
         }
     }
   
 }
 
 // Backend code for creating a new task
-
-if (!isset($_SESSION['username'])){
-    $_SESSION['error'] = "you have to log in first";
-    header('location:login.php');
-}else{ 
+ 
     if(isset($_POST['submit'])){
         try{
             $user_id = $_SESSION['user_id'];
@@ -121,6 +118,12 @@ if (!isset($_SESSION['username'])){
             }elseif(empty($task_description)){
                 $_SESSION['error'] = "Please add a task description";
                 header('location:createtask.php');
+            }elseif(empty($status)){
+                    $_SESSION['error'] = "Please add a ";
+                    header('location:createtask.php');
+            }elseif(empty($priority)){
+                $_SESSION['error'] = "Please add a ";
+                header('location:createtask.php');
             }elseif(mysqli_query($conn, $sql)){
                 echo "Records inserted successfully.";
             }else{
@@ -130,6 +133,6 @@ if (!isset($_SESSION['username'])){
         var_dump($e->getMessage());exit;
         }
     }
-}
+// }
 
 ?>

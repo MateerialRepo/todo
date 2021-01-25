@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<?php if (!isset($_SESSION['username'])){
+    $_SESSION['error'] = "you have to log in first";
+    header('location:login.php');
+}else{ ?>
     <form action="todo.php" method="POST">
         <div>
             <label for="tag">TAG</label>
@@ -17,5 +21,6 @@
             <input type="submit" value="Add TAG" name="add">
         </div>
     </form>
+    <?php } ?>
 </body>
 </html>

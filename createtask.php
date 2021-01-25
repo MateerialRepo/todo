@@ -26,25 +26,30 @@
     
 </head>
 <body>
+<?php if (!isset($_SESSION['username'])){
+    $_SESSION['error'] = "you have to log in first";
+    header('location:login.php');
+}else{ ?>
     <form action="todo.php" method="POST">
         <div>
             <label for="task_name">Task name</label>
             <input type="text" name="task_name">
         </div>
-        <label for="end_date">End date</label>
-        <input type="text" name="end_date" id="datepicker">
+        <div>
+            <label for="end_date">End date</label>
+            <input type="text" name="end_date" id="datepicker">
         </div>
         <div>
-        <label for="task_description"> Task Description</label>
-        <input type="text" name= "task_description">
+            <label for="task_description"> Task Description</label>
+            <input type="text" name= "task_description">
         </div>
         <div>
             <label for="priority">Priority</label>
             <select name="priority" id="">
                 <option value="">Select Priority</option>
-                     <?php  
-                     $priority = mysqli_query($conn, "SELECT id, priority FROM priorities");
-                     foreach ($priority as $key => $val) {?>
+                    <?php  
+                        $priority = mysqli_query($conn, "SELECT id, priority FROM priorities");
+                        foreach ($priority as $key => $val) {?>
                 <option value="<?php echo $val['id']?>"><?php echo $val['priority'] ?></option>
                     <?php }?>
               </select>
@@ -52,7 +57,7 @@
         <div>
              <label for="status">Status</label>
              <select name="status" id="">
-                <option value="status">Status</option>
+                <option value="">Select Status</option>
                      <?php
                      $status = mysqli_query($conn, "SELECT id, status FROM statuses");
                      while($data = mysqli_fetch_array($status)){ ?>
@@ -63,13 +68,16 @@
         <?php
         if (isset($_GET['id'])){
             $tag_id = $_GET['id'];
-           $result = mysqli_query($conn, "SELECT id FROM tags WHERE id = '$tag_id'");}       
+           $result = mysqli_query($conn, "SELECT id FROM tags WHERE id = '$tag_id'");      
         while($data = mysqli_fetch_array($result)){ ?>
         <input type="hidden" name = "id" value = "<?php echo $data['id']?>">
-        <?php }?>
+        <?php } 
+        }
+        ?>
         <div>
         <input type="submit" name="submit" value="Create Task">
         </div>
     </form>
+    <?php } ?>
 </body>
 </html>
