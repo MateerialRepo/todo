@@ -1,7 +1,9 @@
 <?php include('todo.php');
 if (isset($_GET['id'])){
     $tag_id = $_GET['id'];
-$sql = mysqli_query($conn, "SELECT task_name, end_date, task_description FROM tasks WHERE id = '$tag_id'");?>
+    // $user_id = $_SESSION['user_id'];
+    // echo $tag_id;
+$sql = mysqli_query($conn, "SELECT *  FROM tasks WHERE tag_id = '$tag_id' ");?>
 
 <!DOCTYPE html>
 <html lang="en">

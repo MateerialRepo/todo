@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
  
-    <title>TODO APP</title>
+    <title>Do It Now</title>
     <link rel="stylesheet" href="css/style.css">
     <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
 
@@ -31,7 +31,7 @@
     header('location:login.php');
 }else{ ?>
     <form action="todo.php" method="POST">
-        <div>
+        <div class="input-group">
             <label for="task_name">Task name</label>
             <input type="text" name="task_name">
         </div>
@@ -39,11 +39,11 @@
             <label for="end_date">End date</label>
             <input type="text" name="end_date" id="datepicker">
         </div>
-        <div>
+        <div class="input-group">
             <label for="task_description"> Task Description</label>
-            <input type="text" name= "task_description">
+            <textarea name="task_description" id="" cols="30" rows="10"></textarea>
         </div>
-        <div>
+        <div class="input-group">
             <label for="priority">Priority</label>
             <select name="priority" id="">
                 <option value="">Select Priority</option>
@@ -54,7 +54,7 @@
                     <?php }?>
               </select>
         </div>
-        <div>
+        <div class="input-group">
              <label for="status">Status</label>
              <select name="status" id="">
                 <option value="">Select Status</option>

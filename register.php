@@ -9,7 +9,7 @@
     </head>
 <body>
     <form action="todo.php" method= "POST">
-        <h2 style= "text-align: center; color: white;">Create Your Account</h2>
+        <h2 style= "text-align: center; color: white;">Create an account</h2>
         <?php include('message.php') ?>
         <div class="input-group">
             <label for="username">Username</label>
@@ -31,7 +31,7 @@
             <input type="submit" value="Register" name="register" >
         </div>
         <div>
-        <p>Already have an account? <a href="login.php">login</a></p>
+        <p style="margin-top: 30px;">Already have an account? <a href="login.php">login</a></p>
         </div>
     </form>
 </body>

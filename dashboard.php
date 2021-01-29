@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TODO APP</title>
+    <title>Do It Now</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
 </head>
@@ -49,7 +49,7 @@
                                     <div class='card-body'>
                                         <h2><?php echo$tag?> </h2>
                                         <span><a href="createtask.php?id= <?php echo $tag_id;?>"">Add Task</a></span>
-                                        <span><a href="viewtasks.php?id= <?php echo $row['id'];?>"">View task</a></span>
+                                        <span><a href="viewtasks.php?id= <?php echo $tag_id;?>"">View task</a></span>
                                     </div>
                                 </div>
                             </div>
