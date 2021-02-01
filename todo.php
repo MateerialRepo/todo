@@ -20,6 +20,9 @@ if (isset($_POST['register'])){
     }elseif (empty($password)){
         $_SESSION['error'] = "Password is required";
         header("location:register.php");
+    }elseif (empty($confirm_password)){
+        $_SESSION['error'] = "kindly confirm Password";
+        header("location:register.php");
     }elseif ($password != $confirm_password){
         $_SESSION['error'] = "Passwords doesn't match";
         header("location:register.php");
@@ -64,7 +67,7 @@ if (isset($_POST['login'])){
             $_SESSION['username'] = $username;
             $_SESSION['user_id'] =$row['id'];
             $_SESSION['success'] ="you are now logged in";
-            header('location:dashboard.php');
+            header('location:dashboard2.php');
         }else{
             $_SESSION['error'] = "Wrong Username/Password";
             header('location:login.php');

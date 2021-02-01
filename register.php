@@ -21,7 +21,7 @@
         </div>
         <div class="input-group">
             <label for="password">Password</label>
-            <input type="password" name="password" >
+            <input type="password" name="password" placeholder="Minimum of eight characters" >
         </div>
         <div class="input-group">
             <label for="password"> Confirm Password</label>

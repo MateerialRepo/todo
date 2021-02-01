@@ -20,8 +20,9 @@
     </div>
 
     <div class="main">
-        <div class="container">
-            <div class="row">
+        <!-- <div class="main-content"> -->
+                <div class="container">
+                    <div class="row">
                 <?php 
                     if (!isset($_SESSION['username'])){
                         $_SESSION['error'] = "you have to log in first";
@@ -30,6 +31,7 @@
                         <strong>Welcome!</strong>
                         <?php echo $_SESSION['username'];
                     }?>
+<!-- </div> -->
 
                 <?php
                     if (isset($_GET['logout'])){
@@ -44,15 +46,17 @@
                         while ($row = $sql->fetch_assoc()) {
                             $tag = $row['tag'];
                             $tag_id = $row['id']; ?>
-                            <div class='col-md-3'>
+                            <div class='col-md-4'>
+                                <!-- <div class= 'col-sm-6'> -->
                                 <div class='card card-name'>
                                     <div class='card-body'>
-                                        <h2><?php echo$tag?> </h2>
+                                        <div class="tag"><h2><?php echo$tag?></h2></div>
                                         <span><a href="createtask.php?id= <?php echo $tag_id;?>"">Add Task</a></span>
                                         <span><a href="viewtasks.php?id= <?php echo $tag_id;?>"">View task</a></span>
                                     </div>
                                 </div>
                             </div>
+                            
                   <?php  } 
                     }
                     $conn->close();
@@ -60,5 +64,6 @@
               </div>
           </div>
     </div>
+    <!-- </div> -->
 </body>
 </html>

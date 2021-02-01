@@ -93,19 +93,24 @@ li a:active{
     background-color: rgb(253, 194, 234);
 }
 .main{
-    margin:10px 10px 10px 200px; 
-    height:1000px;
+    margin:20px 10px 10px 200px; 
+    height:100vh;
     /* width:x; */
     /* padding:1px 16px;  */
      background-color:white; 
     border-style: solid rgb(236, 177, 236); 
     border-radius:20px;
+    display: grid;
+    /* align-items: center; */
 }
 div .card-name{
-    margin-top:10px;
+    height: 200px;
+    /* width: 150px; */
+    /* margin-right: 10px; */
+    margin-top:100px;
     margin-bottom: 30px;
     background-color: rgb(114, 24, 114);
-    border-radius: 80px 30px;
+    border-radius:20px;
     text-align: center;
     color: white;
 }
@@ -178,4 +183,7 @@ tr:nth-child(even){background-color: purple;
     background-color: rgba(198, 16, 235);
     text-decoration: none;
     color: white;
+}
+.tag{
+    text-align: left;
 }
