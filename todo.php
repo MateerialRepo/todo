@@ -65,9 +65,9 @@ if (isset($_POST['login'])){
         $row = mysqli_fetch_assoc($results);
         if (mysqli_num_rows($results) == 1){
             $_SESSION['username'] = $username;
-            $_SESSION['user_id'] =$row['id'];
-            $_SESSION['success'] ="you are now logged in";
-            header('location:dashboard2.php');
+            $_SESSION['user_id'] = $row['id'];
+            // $_SESSION['success'] ="you are now logged in";
+            header('location:dashboard.php');
         }else{
             $_SESSION['error'] = "Wrong Username/Password";
             header('location:login.php');
@@ -77,14 +77,17 @@ if (isset($_POST['login'])){
 
 if(isset($_POST['add'])){
     $tag = $_POST['tag'];
-    $username = $_SESSION['username'];
-    $sql = mysqli_query($conn, "SELECT id FROM users WHERE username = '$username'");
-    while($row = mysqli_fetch_assoc($sql)){
-    $_SESSION['user_id'] = $row['id'];
+    // $username = $_SESSION['username'];
+    // $sql = mysqli_query($conn, "SELECT id FROM users WHERE username = '$username'");
+    // while($row = mysqli_fetch_assoc($sql)){
+    // $_SESSION['user_id'] = $row['id'];
     $user_id = $_SESSION['user_id'];
         if(empty($tag)){
             $_SESSION['error'] = "kindly create a tag";
             header("location:createTag.php");
+        }elseif(empty($user_id)){
+                $_SESSION['error'] = "Please kindly login";
+                header("location:login.php");
         }else{
             $results = mysqli_query($conn, "SELECT * FROM tags WHERE tag = '$tag' AND user_id = '$user_id' LIMIT 1");
             $row = mysqli_fetch_assoc($results);
@@ -99,7 +102,7 @@ if(isset($_POST['add'])){
         }
     }
   
-}
+// }
 
 // Backend code for creating a new task
  
@@ -110,10 +113,10 @@ if(isset($_POST['add'])){
             $task_description =mysqli_real_escape_string($conn,($_POST['task_description']));
             $status = $_POST['status'];
             $priority = $_POST['priority'];
-            $tag_id = $_POST['id'];
+            $tag = $_POST['tag'];
             $end_date = mysqli_real_escape_string($conn, ($_POST['end_date']));
             $sql = "INSERT INTO tasks (user_id, task_name, task_description, status_id, priority_id, end_date, tag_id) 
-            VALUES('$user_id','$task_name', '$task_description', '$status', '$priority', '$end_date', '$tag_id')";
+            VALUES('$user_id','$task_name', '$task_description', '$status', '$priority', '$end_date', '$tag')";
             
             if(empty($task_name)){
             $_SESSION['error'] = "Please add a task name";

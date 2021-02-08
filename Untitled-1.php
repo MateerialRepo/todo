@@ -48,4 +48,13 @@
                         showTz=0&amp;showPrint=0" style="border:solid 1px #777" width="300" height="180"
                          frameborder="0" scrolling="no"></iframe>
                 </div>
+                <!-- <?php
+        if (isset($_GET['id'])){
+            $tag_id = $_GET['id'];
+           $result = mysqli_query($conn, "SELECT id FROM tags WHERE id = '$tag_id'");      
+        while($data = mysqli_fetch_array($result)){ ?>
+        <input type="hidden" name = "id" value = "<?php echo $data['id']?>">
+        <?php } 
+        }
+        ?> -->
        

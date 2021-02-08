@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<?php if (!isset($_SESSION['username'])){
+<?php
+$user_id = $_SESSION['user_id'];
+    if (!isset($_SESSION['username'])){
     $_SESSION['error'] = "you have to log in first";
     header('location:login.php');
 }else{ ?>
@@ -18,7 +20,7 @@
             <input type="text" name="tag">
         </div>
         <div>
-            <input type="submit" value="Add TAG" name="add">
+            <input type="submit" value="tag" name="add">
         </div>
     </form>
     <?php } ?>
