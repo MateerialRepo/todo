@@ -139,6 +139,13 @@ if(isset($_POST['add'])){
         var_dump($e->getMessage());exit;
         }
     }
+
+    if (isset($_GET['delete'])){
+        $id = $_GET['delete'];
+        mysqli_query($conn, "DELETE FROM tasks WHERE id = $id");
+        $_SESSION['success'] = "you have Deleted task";
+               header("location:dashboard.php");
+     } 
 // }
 
 ?>
