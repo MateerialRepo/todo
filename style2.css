@@ -132,11 +132,21 @@ div .card-name{
     margin-left: auto;
     margin-right: auto;
     margin-bottom:20px;
-    background-color:   #621351;
+    background-color: rgba(139, 2, 94);
+    
     border-radius:20px;
     text-align: center;
     color: white;
 }
+div .card-name:nth-child(3) {
+    background-color:  rgba(175, 33, 121, 0.5);
+}
+div .card-name:nth-child(2) {
+ background-color:  rgb(240, 97, 185);
+}
+div .card-name:nth-child(4) {
+    background-color: rgba(243, 10, 154, 0.6);
+   }
 table{
     width:100%;
     border-collapse: collapse;

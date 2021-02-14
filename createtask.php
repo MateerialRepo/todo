@@ -59,7 +59,7 @@
             <select name="tag" id="">
                 <option value="">Select Tag</option>
                     <?php
-                        $result = mysqli_query($conn, "SELECT id, tag FROM tags WHERE user_id = '$user_id'");
+                        $result = mysqli_query($conn, "SELECT id, tag FROM tags");
                         while($val = mysqli_fetch_assoc($result))
                         { ?>
                 <option value="<?php echo $val['id'] ?>"> <?php echo $val['tag'] ?></option> 

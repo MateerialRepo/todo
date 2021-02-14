@@ -34,9 +34,9 @@ include('database.php'); ?>
         $total_no_of_pages = ceil($total_records / $total_records_per_page);
         $second_last = $total_no_of_pages - 1; 
         $sql = mysqli_query($conn, "SELECT *  FROM tasks WHERE user_id = '$user_id' LIMIT $offset, $total_records_per_page"); ?>
-            <table class="table table-bordered">
-                <caption> <h1>TASKS BOARD </h1></caption>
-                <thead>
+            <table class="table">
+                <caption style="text-align: center;"> <h1>TASKS BOARD </h1></caption>
+                <thead >
                     <tr>
                         <th>TASK NAME</th>
                         <th>TASK TAG</th>
@@ -98,6 +98,82 @@ include('database.php'); ?>
 
   </div>
 </div></td>
+ <td>
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modalEditForm">edit</button>
+
+<!-- Modal -->
+<div id="modalEditForm" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edit Tasks</h4>
+      </div>
+      <div class="modal-body">
+      <form role="form" action="todo.php" method="POST">
+        <div class="form-group">
+            <label class="control-label" for="task_name">Task name</label>
+            <input type="text" class="form-control input-lg" name="task_name">
+        </div>
+        <div>
+            <label for="end_date">End date</label>
+            <input type="text" name="end_date" id="datepicker">
+        </div>
+        <div class="input-group">
+            <label for="task_description"> Task Description</label>
+            <textarea name="task_description" id="" cols="30" rows="10"></textarea>
+        </div>
+        <div class="input-group">
+            <label for="priority">Priority</label>
+            <select name="priority" id="">
+                <option value="">Select Priority</option>
+                    <?php  
+                        $priority = mysqli_query($conn, "SELECT id, priority FROM priorities");
+                        foreach ($priority as $key => $val) {?>
+                <option value="<?php echo $val['id']?>"><?php echo $val['priority']; ?>
+                </option>
+                    <?php }?>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="tag">Tag</label>
+            <select name="tag" id="">
+                <option value="">Select Tag</option>
+                    <?php
+                        $result = mysqli_query($conn, "SELECT id, tag FROM tags WHERE user_id = '$user_id'");
+                        while($val = mysqli_fetch_assoc($result))
+                        { ?>
+                <option value="<?php echo $val['id'] ?>"> <?php echo $val['tag'] ?></option> 
+                    <?php }  ?> 
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="status">Status</label>
+            <select name="status" id="">
+                <option value="">Select Status</option>
+                     <?php
+                     $status = mysqli_query($conn, "SELECT id, status FROM statuses");
+                     while($data = mysqli_fetch_array($status)){ ?>
+                <option value="<?php echo $data['id'] ?>"> <?php echo$data['status'] ?> </option>
+                    <?php }  ?>
+            </select>
+        </div>
+        <div>
+            <input type="submit" name="submit" value="Create Task">
+        </div>
+    </form>
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-default"><a href="todo.php?edit= <?php echo $row['id'];?>"> Yes</a></button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+      </div>
+    </div>
+
+  </div>
+</div></td>
+ 
                         </tr>
                         </tbody>
                     <?php } ?>

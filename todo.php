@@ -75,32 +75,32 @@ if (isset($_POST['login'])){
     }
 }
 
-if(isset($_POST['add'])){
-    $tag = $_POST['tag'];
-    // $username = $_SESSION['username'];
-    // $sql = mysqli_query($conn, "SELECT id FROM users WHERE username = '$username'");
-    // while($row = mysqli_fetch_assoc($sql)){
-    // $_SESSION['user_id'] = $row['id'];
-    $user_id = $_SESSION['user_id'];
-        if(empty($tag)){
-            $_SESSION['error'] = "kindly create a tag";
-            header("location:createTag.php");
-        }elseif(empty($user_id)){
-                $_SESSION['error'] = "Please kindly login";
-                header("location:login.php");
-        }else{
-            $results = mysqli_query($conn, "SELECT * FROM tags WHERE tag = '$tag' AND user_id = '$user_id' LIMIT 1");
-            $row = mysqli_fetch_assoc($results);
-            if ( ($row['tag'] === $tag) && ($row['user_id'] === $user_id) ){
-               $_SESSION['error'] = "tag already exists";
-               header("location:dashboard.php");
-            }else{
-                $sql = mysqli_query($conn, "INSERT INTO tags (tag, user_id) VALUES ('$tag', '$user_id')");
-                $_SESSION['success'] = "you have created a new tag";
-               header("location:dashboard.php");
-            }
-        }
-    }
+// if(isset($_POST['add'])){
+//     $tag = $_POST['tag'];
+//     // $username = $_SESSION['username'];
+//     // $sql = mysqli_query($conn, "SELECT id FROM users WHERE username = '$username'");
+//     // while($row = mysqli_fetch_assoc($sql)){
+//     // $_SESSION['user_id'] = $row['id'];
+//     $user_id = $_SESSION['user_id'];
+//         if(empty($tag)){
+//             $_SESSION['error'] = "kindly create a tag";
+//             header("location:createTag.php");
+//         }elseif(empty($user_id)){
+//                 $_SESSION['error'] = "Please kindly login";
+//                 header("location:login.php");
+//         }else{
+//             $results = mysqli_query($conn, "SELECT * FROM tags WHERE tag = '$tag' AND user_id = '$user_id' LIMIT 1");
+//             $row = mysqli_fetch_assoc($results);
+//             if ( ($row['tag'] === $tag) && ($row['user_id'] === $user_id) ){
+//                $_SESSION['error'] = "tag already exists";
+//                header("location:dashboard.php");
+//             }else{
+//                 $sql = mysqli_query($conn, "INSERT INTO tags (tag, user_id) VALUES ('$tag', '$user_id')");
+//                 $_SESSION['success'] = "you have created a new tag";
+//                header("location:dashboard.php");
+//             }
+//         }
+//     }
   
 // }
 

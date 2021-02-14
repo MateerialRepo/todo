@@ -15,7 +15,6 @@
             <ul>
                 <li><img src="images/logo.png"" alt="" width="55px"></li>
                 <li><a href="dashboadrd.html">Dashboard</a></li>
-                <li><a href="createTag.php">Add Tag</a></li>
                 <li><a href="createtask.php"> ADD TASK</a></li>
                 <li><a href="dashboard.php?logout">Logout</a> </li>
             </ul>
@@ -50,8 +49,8 @@
             <div class="main-side">
                 <div class="tag">
                     <?php 
-                        $user_id = $_SESSION['user_id'];
-                        $sql = mysqli_query($conn, "SELECT tag, id FROM tags WHERE user_id ='$user_id' ORDER BY tag ASC LIMIT 4");
+                        // $user_id = $_SESSION['user_id'];
+                        $sql = mysqli_query($conn, "SELECT tag, id FROM tags ORDER BY tag ASC LIMIT 4");
                         if ($sql->num_rows > 0) {
                             while ($row = $sql->fetch_assoc()) {
                                 $tag = $row['tag'];
@@ -61,7 +60,20 @@
                                     <?php
                                         $result = mysqli_query($conn, "SELECT tag_id FROM tasks where user_id = '$user_id'"); 
                                     ?>
-                                    <span><a href="createtask.php">Add Task</a></span>
+                                    <?php
+                                    $sql = mysqli_query($conn, "SELECT task FROM tasks WHERE user_id = '$user_id' group by tag_id having count(*)>1"); 
+                                    if ($sql->num_rows > 0) {
+                                        while ($row = $sql->fetch_assoc()) {
+                                            $task = $row['task'];
+                                            // $tag_id = $row['id'];
+                                             ?>
+                                    <!--  -->
+                                    <span>
+                                    <?php echo $task;
+                                    
+                                        }
+                                        }?>
+                                    </span>
                                     <span><a href="viewtasks.php?id= <?php echo $tag_id;?>"">View task</a></span>
                                 </div>                            
                     <?php  
