@@ -1,16 +1,21 @@
-.body{
-    background: url('../images/todo.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 600px;
-    float: right;
-
-    
+*{
+    box-sizing: border-box;
 }
 form{
-    width:40%;
-    background-color:rgb(168, 9, 168);
+    width:70%;
+    background-color :rgb(168, 9, 168); 
+    border: thick inset;
+    border-color: purple;
+    border-radius: 10px;
+    margin: 50px auto;
+    padding: 5%;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    
+}
+@media only screen and (min-width: 768px){
+form{
+    width:30%;
+    background-color :rgb(168, 9, 168); 
     border: thick inset;
     border-color: purple;
     border-radius: 10px;
@@ -18,18 +23,19 @@ form{
     padding: 5%;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     }
-.registration{
+}
+.input-group{
     margin: 10px 0px 10px 0px;
 }
-.registration label{
+.input-group label{
     display: block;
     text-align:left;
-    margin: 3px;
+    margin: 5px;
 }
-.registration input{
+.input-group input{
     height:30px;
     width: 93%;
-    padding: 5px 10;
+    padding: 5px 10px;
     border-radius: 5px;
     border: 1px solid lightpink;
 }
@@ -41,18 +47,37 @@ form{
     color: purple;
     border: thick solid rgb(230, 107, 230);
 }
-
-.wel{
-    text-align: center;
-    font-style: italic;
-    font-family: 'Courier New', Courier, monospace;
-}
-.span{
-    color: purple;
-    font-size: 40px;
-    font-family: serif;
-}
 .forgot{
     color:rgb(184, 173, 247);
     text-align: right;
+}
+.side-nav ul{
+list-style-type: none;
+margin:0;
+padding:0;
+/* background-color: rgb(236, 132, 236); */
+height: 100%;
+/* width: 20%; */
+position: fixed;
+overflow: auto;
+}
+/* li{
+    text-decoration: none; */
+
+.side-nav li a{
+    display: block;
+    /* width: 200px; */
+    text-decoration: none;
+    /* height: 40px; */
+    /* text-align: center; */
+    padding: 8px 16px;
+    color: white;
+}
+li a:hover{
+    background-color: rgb(241, 179, 241);
+    width: 200px;
+    color: #555;
+}
+li a:active{
+    background-color: rgb(253, 194, 234);
 }
