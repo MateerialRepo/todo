@@ -45,17 +45,19 @@
         <label for="task_description"> Task Description</label>
         <input type="text" name= "task_description">
         </div>
+
         <div>
             <label for="priority">Priority</label>
             <select name="priority" id="">
                 <option value="">Select Priority</option>
                      <?php  
-                     $priority = mysqli_query($conn, "SELECT id, priority FROM priorities");
+                     $priority = mysqli_query($conn, "SELECT * FROM priorities");
                      while($data = mysqli_fetch_array($priority)){?>
-                <option value="<?php $data['id']?>"><?php echo $data['priority'] ?></option>
+                <option value="<?php $data['id']?>"> <?php echo $data['priority'] ?> </option>
                     <?php }?>
               </select>
         </div>
+
         <div>
              <label for="status">Status</label>
              <select name="status" id="">
@@ -67,6 +69,7 @@
                     <?php }  ?>
               </select>
         </div>
+
         <div>
         <input type="submit" name="submit" value="Create Task">
         </div>

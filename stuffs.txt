@@ -1,0 +1,3 @@
+$conn = new mysqli("localhost", "my_user", "my_password", "world");
+$result = mysqli_query($conn, "SELECT Name FROM City LIMIT 10"))
+or $result = $conn->query("SELECT Name FROM City LIMIT 10")) 
